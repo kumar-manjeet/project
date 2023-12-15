@@ -151,5 +151,7 @@ public class Query {
 				+ ", email=" + email + ", relatedSearch=" + relatedSearch + ", mobileNumber=" + mobileNumber
 				+ ", status=" + status + ", description=" + description + "]";
 	}
+	
+	
 
 }
