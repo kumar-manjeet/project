@@ -1,0 +1,23 @@
+<div th:fragment="assignPermission">
+	<form th:action="@{/uriPermissionList}" method="post">
+		<label for="dropdown">Select an option:</label> <select id="dropdown"
+			name="roleId">
+			<option value="0" th:text="Select"></option>
+			<option th:each="role : ${roles}" th:value="${role.id}"
+				th:selected="${role.id == roleVo.id}" th:text="${role.name}"></option>
+		</select> <input type="submit">
+	</form>
+
+	<form th:action="@{/saveRolePermisson}" th:object="${SaveRolePermissonRequestDto}" method="post">
+		<div th:each="item, var : ${rolePermssionOnUriByRoleId}">
+			<input type="checkbox" th:checked="${item.status}"
+				th:name="uriResponseDto[__${var.index}__].status" /> <span
+				th:text="${item.uriName}"></span> <input type="hidden" th:value="${item.uriId}"
+				th:name="uriResponseDto[__${var.index}__].uriId">
+		</div>
+		<input type="hidden" th:value="${roleVo.id}"
+				th:name="roleId">
+		<div><input type="submit"></div>
+	</form>
+
+</div>
